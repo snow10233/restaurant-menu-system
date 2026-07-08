@@ -13,6 +13,10 @@
     "build": "npm run build --workspaces",
     "build:web": "npm run build -w @menu-system/web-nuxt",
     "build:api": "npm run build -w @menu-system/api",
-    "typecheck": "npm run typecheck --workspaces"
+    "typecheck": "npm run typecheck --workspaces",
+    "db:generate": "npm run db:generate -w @menu-system/api",
+    "db:migrate": "npm run db:migrate -w @menu-system/api",
+    "db:seed": "npm run db:seed -w @menu-system/api",
+    "db:studio": "npm run db:studio -w @menu-system/api"
   }
 }
