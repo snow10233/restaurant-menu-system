@@ -59,6 +59,30 @@ npm run build
 
 預設 `npm run dev` 會啟動 Nuxt app。
 
+Docker staging:
+
+```sh
+cp .env.staging.example .env.staging
+docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --build
+```
+
+CI:
+
+```sh
+npm run typecheck
+npm run build
+docker compose --env-file .env.staging.example -f docker-compose.staging.yml config
+```
+
+## Staging 部署方向
+
+第一版 staging 會使用 Docker Compose，在單台 VPS 上分開跑 Nuxt、NestJS API、PostgreSQL、Caddy reverse proxy 與簡單備份服務。
+
+詳見：
+
+- `docs/deployment-staging.md`
+- `docs/adr/0003-staging-deployment.md`
+
 ## 主要檔案
 
 - `apps/web-nuxt/app.vue`：Nuxt 前端狀態與頁面切換
@@ -69,9 +93,16 @@ npm run build
 - `apps/web-nuxt/data/menu.ts`：目前展示用菜單與訂單資料
 - `apps/web-nuxt/types.ts`：前端 TypeScript 型別
 - `apps/api/src/main.ts`：NestJS API 入口
+- `docker-compose.staging.yml`：單台 VPS staging Compose stack
+- `deploy/Caddyfile`：staging reverse proxy 設定
+- `.github/workflows/ci.yml`：GitHub Actions 基本檢查
 - `data/menu-catalog.json`：餐廳價位一覽的結構化原始資料
 - `agent.md`：給未來 coding agent 的架構備忘錄
 - `docs/requirements.md`：需求規格書草案
 - `docs/architecture.html`：用 HTML 撰寫的架構解釋
 - `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
 - `docs/adr/0002-database-choice.md`：資料庫選型決策
+- `docs/deployment-staging.md`：staging Docker Compose 部署筆記
+- `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
+- `docs/adr/0002-database-choice.md`：資料庫選型決策
+- `docs/adr/0003-staging-deployment.md`：staging 部署決策
