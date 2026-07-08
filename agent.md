@@ -35,6 +35,8 @@ docs/
   requirements.md
   architecture.html
   adr/
+data/
+  menu-catalog.json
 assets/
   source menu images
 ```
@@ -56,6 +58,7 @@ Frontend and backend are intentionally separated:
 - `apps/api/src/main.ts`: NestJS bootstrap, CORS, and `/api` prefix.
 - `apps/api/src/routes/health.controller.ts`: API health endpoint.
 - `apps/api/src/routes/menu.controller.ts`: temporary menu API endpoint.
+- `data/menu-catalog.json`: structured source menu catalog from the restaurant price list.
 - `docs/adr/0001-mvp-tech-stack.md`: stack decision.
 - `docs/adr/0002-database-choice.md`: PostgreSQL over SQLite as the production database.
 
@@ -107,6 +110,8 @@ Database:
 
 The frontend currently uses local demo data and local component state. There is no real persistence yet. The next meaningful backend step is to introduce an ORM decision, schema migrations, and the first real menu/order endpoints.
 
+`data/menu-catalog.json` is the current structured source for the restaurant's real price list. It is not yet wired into the Nuxt UI or API.
+
 ## Validation
 
 Before handing work back, run:
@@ -117,4 +122,3 @@ npm run build
 ```
 
 Both commands were passing after the Nuxt/NestJS workspace migration.
-

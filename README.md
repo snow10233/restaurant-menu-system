@@ -69,6 +69,7 @@ npm run build
 - `apps/web-nuxt/data/menu.ts`：目前展示用菜單與訂單資料
 - `apps/web-nuxt/types.ts`：前端 TypeScript 型別
 - `apps/api/src/main.ts`：NestJS API 入口
+- `data/menu-catalog.json`：餐廳價位一覽的結構化原始資料
 - `agent.md`：給未來 coding agent 的架構備忘錄
 - `docs/requirements.md`：需求規格書草案
 - `docs/architecture.html`：用 HTML 撰寫的架構解釋
