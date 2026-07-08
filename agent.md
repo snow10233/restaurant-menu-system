@@ -33,9 +33,10 @@ apps/
   api/        NestJS + TypeScript API
 docs/
   requirements.md
-  architecture.html
   deployment-staging.md
   adr/
+local-reports/
+  local-only HTML reports ignored by git
 data/
   menu-catalog.json
 assets/
