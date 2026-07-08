@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "currency": "TWD",
+  "source": "餐廳價位一覽",
+  "categories": [
+    {
+      "id": "sushi",
+      "name": "壽司",
+      "items": [
+        {
+          "name": "豆皮壽司",
+          "portion": "十貫",
+          "price": 120
+        },
+        {
+          "name": "綜合壽司",
+          "portion": "海苔五貫／豆皮五貫",
+          "price": 130
+        },
+        {
+          "name": "海苔壽司",
+          "portion": "十貫",
+          "price": 140
+        },
+        {
+          "name": "花壽司",
+          "portion": "十貫",
+          "price": 200
+        },
+        {
+          "name": "綜合握壽司",
+          "portion": "六貫",
+          "price": 200
+        },
+        {
+          "name": "生魚握壽司",
+          "portion": "六貫",
+          "price": 200
+        },
+        {
+          "name": "鮭魚握壽司",
+          "portion": "二貫",
+          "price": 90
+        },
+        {
+          "name": "鮮蝦握壽司",
+          "portion": "二貫",
+          "price": 60
+        },
+        {
+          "name": "鰻魚握壽司",
+          "portion": "二貫",
+          "price": 80
+        },
+        {
+          "name": "照燒玉子握壽司",
+          "portion": "二貫",
+          "price": 60
+        },
+        {
+          "name": "軟絲握壽司",
+          "portion": "二貫",
+          "price": 80
+        },
+        {
+          "name": "干貝握壽司",
+          "portion": "二貫",
+          "price": 120
+        },
+        {
+          "name": "天使蝦握壽司",
+          "portion": "二貫",
+          "price": 120
+        },
+        {
+          "name": "比目魚鰭邊肉握壽司",
+          "portion": "二貫",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "id": "cold-dishes",
+      "name": "冷菜",
+      "items": [
+        {
+          "name": "生魚片",
+          "portion": "九片",
+          "price": 320
+        },
+        {
+          "name": "盛合生魚片",
+          "portion": "天使蝦兩條／軟絲／時令生魚九片",
+          "price": 400
+        },
+        {
+          "name": "馬鈴薯沙拉",
+          "price": 90
+        },
+        {
+          "name": "鮮蝦沙拉",
+          "price": 130
+        },
+        {
+          "name": "蘆筍沙拉",
+          "price": 160
+        },
+        {
+          "name": "五味A級軟絲",
+          "price": 240
+        }
+      ]
+    },
+    {
+      "id": "hand-rolls",
+      "name": "手卷",
+      "items": [
+        {
+          "name": "鮮蝦蘆筍手卷",
+          "price": 70
+        },
+        {
+          "name": "蝦卵蘆筍手卷",
+          "price": 70
+        },
+        {
+          "name": "鰻魚蔥花手卷",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "id": "soups",
+      "name": "湯品",
+      "items": [
+        {
+          "name": "味噌湯",
+          "price": 20
+        },
+        {
+          "name": "蛤仔湯",
+          "price": 70
+        },
+        {
+          "name": "海帶芽湯",
+          "price": 70
+        },
+        {
+          "name": "鮮魚湯",
+          "price": 160
+        },
+        {
+          "name": "海鮮湯鍋",
+          "price": 160
+        },
+        {
+          "name": "豬肉湯鍋",
+          "price": 160
+        },
+        {
+          "name": "牛肉湯鍋",
+          "price": 160
+        }
+      ]
+    },
+    {
+      "id": "omakase-bento",
+      "name": "無菜單餐盒",
+      "items": [
+        {
+          "name": "無菜單餐盒",
+          "priceFrom": 400
+        }
+      ]
+    },
+    {
+      "id": "rice",
+      "name": "飯類",
+      "items": [
+        {
+          "name": "鮭魚炒飯",
+          "price": 150
+        },
+        {
+          "name": "義式松阪豬炒飯",
+          "price": 150
+        },
+        {
+          "name": "有點粗牛小排炒飯",
+          "price": 150
+        },
+        {
+          "name": "雞腿丁親子丼",
+          "price": 150
+        },
+        {
+          "name": "雪花牛丼",
+          "price": 150
+        },
+        {
+          "name": "薑汁豬肉丼",
+          "price": 150
+        },
+        {
+          "name": "滑蛋起司豬排丼",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "id": "noodles",
+      "name": "麵類",
+      "items": [
+        {
+          "name": "烏龍炒麵",
+          "price": 150
+        },
+        {
+          "name": "豬肉片炒烏龍麵",
+          "price": 150
+        },
+        {
+          "name": "有點粗牛小排炒麵",
+          "price": 150
+        },
+        {
+          "name": "烏龍湯麵",
+          "price": 150
+        },
+        {
+          "name": "和風牛肉烏龍湯麵",
+          "price": 150
+        },
+        {
+          "name": "和風豬肉湯麵",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "id": "hot-dishes",
+      "name": "熱菜",
+      "items": [
+        {
+          "name": "蒸蛋",
+          "price": 80
+        },
+        {
+          "name": "當歸青菜",
+          "price": 80
+        },
+        {
+          "name": "柴汁蘿蔔",
+          "price": 80
+        },
+        {
+          "name": "鮮炒六蔬菜",
+          "price": 150
+        },
+        {
+          "name": "川燙白蝦",
+          "price": 160
+        },
+        {
+          "name": "香煎松阪豬肉",
+          "price": 160
+        },
+        {
+          "name": "香烤牛小排",
+          "price": 240
+        },
+        {
+          "name": "烤雞腿七味燒",
+          "price": 160
+        },
+        {
+          "name": "松阪豬串燒",
+          "price": 100
+        },
+        {
+          "name": "烤五花肉",
+          "description": "佐味噌醬",
+          "price": 150
+        },
+        {
+          "name": "香酥鮭魚皮",
+          "description": "佐味噌醬",
+          "price": 80
+        },
+        {
+          "name": "香酥雞腿",
+          "description": "佐味噌醬",
+          "price": 160
+        },
+        {
+          "name": "香酥炸豬排",
+          "price": 160
+        },
+        {
+          "name": "烤挪威青花魚",
+          "price": 240
+        },
+        {
+          "name": "鮮烤香菇",
+          "price": 80
+        },
+        {
+          "name": "日式炸豆腐",
+          "price": 80
+        }
+      ]
+    }
+  ],
+  "setMeals": [
+    {
+      "id": "double-main-set",
+      "name": "雙主餐定食",
+      "description": "從 A 主餐與 B 副餐各選一項，並包含定食附餐。",
+      "groups": [
+        {
+          "id": "main-a",
+          "name": "A",
+          "required": true,
+          "items": [
+            {
+              "code": "A",
+              "name": "木野炸豬排",
+              "price": 360
+            },
+            {
+              "code": "B",
+              "name": "綜合壽司",
+              "portion": "花壽司五貫／豆皮三貫",
+              "price": 360
+            },
+            {
+              "code": "C",
+              "name": "雞腿七味燒",
+              "price": 360
+            },
+            {
+              "code": "D",
+              "name": "日式豬肉燒",
+              "price": 360
+            },
+            {
+              "code": "E",
+              "name": "雪花牛肉燒",
+              "price": 360
+            },
+            {
+              "code": "F",
+              "name": "生魚握壽司",
+              "portion": "六貫",
+              "price": 360
+            },
+            {
+              "code": "G",
+              "name": "綜合握壽司",
+              "portion": "六貫",
+              "price": 360
+            },
+            {
+              "code": "H",
+              "name": "豪華生魚蓋飯",
+              "portion": "天使蝦／干貝／軟絲／時令生魚七片",
+              "price": 480
+            },
+            {
+              "code": "I",
+              "name": "挪威鯖魚鹽燒",
+              "price": 400
+            },
+            {
+              "code": "J",
+              "name": "香蔥鰻魚蓋飯",
+              "price": 500
+            },
+            {
+              "code": "K",
+              "name": "A級軟絲",
+              "preparations": ["紅燒", "照燒", "金沙"],
+              "price": 420
+            },
+            {
+              "code": "L",
+              "name": "美國特選牛小排",
+              "price": 420
+            }
+          ]
+        },
+        {
+          "id": "side-b",
+          "name": "B",
+          "required": true,
+          "items": [
+            {
+              "code": "A",
+              "name": "鮮蝦沙拉"
+            },
+            {
+              "code": "B",
+              "name": "生魚片"
+            },
+            {
+              "code": "C",
+              "name": "升級湯鍋四選一",
+              "priceDelta": 20,
+              "choices": ["豬肉湯鍋", "牛肉湯鍋", "海鮮湯鍋", "味噌鮭魚皮湯鍋"]
+            }
+          ]
+        }
+      ],
+      "includedSides": ["食蔬", "蒸蛋", "味噌湯", "白飯"],
+      "rules": [
+        "壽司類定食附餐無白飯。",
+        "升級湯鍋附餐無味噌湯。"
+      ]
+    }
+  ]
+}
