@@ -30,7 +30,7 @@ The repository uses npm workspaces.
 ```text
 apps/
   web-nuxt/   Nuxt + Vue + TypeScript + Tailwind CSS frontend
-  api/        NestJS + TypeScript API
+  api/        NestJS + TypeScript API with Drizzle/PostgreSQL
 docs/
   requirements.md
   architecture.html
@@ -57,11 +57,12 @@ Frontend and backend are intentionally separated:
 - `apps/web-nuxt/data/menu.ts`: temporary demo menu/order data.
 - `apps/web-nuxt/types.ts`: frontend TypeScript domain types.
 - `apps/api/src/main.ts`: NestJS bootstrap, CORS, and `/api` prefix.
+- `apps/api/src/db/schema.ts`: Drizzle schema for restaurants, menu categories, menu items, status, and inventory mode.
+- `apps/api/drizzle/`: generated SQL migrations and Drizzle metadata.
+- `apps/api/src/db/seed.ts`: seed script that imports `data/menu-catalog.json` into PostgreSQL.
+- `apps/api/src/menu/`: menu repository/service module. It reads PostgreSQL when `DATABASE_URL` is configured and falls back to JSON for local development.
 - `apps/api/src/routes/health.controller.ts`: API health endpoint.
-- `apps/api/src/routes/menu.controller.ts`: temporary menu API endpoint.
-- `data/menu-catalog.json`: structured source menu catalog from the restaurant price list.
-- `docs/adr/0001-mvp-tech-stack.md`: stack decision.
-- `docs/adr/0002-database-choice.md`: PostgreSQL over SQLite as the production database.
+- `apps/api/src/routes/menu.controller.ts`: public menu API endpoint.
 - `docker-compose.staging.yml`: staging stack for proxy, web, api, PostgreSQL, and backup.
 - `deploy/Caddyfile`: Caddy reverse proxy routing for `/` and `/api`.
 - `.github/workflows/ci.yml`: lightweight CI for install, typecheck, build, and Compose config validation.
@@ -80,6 +81,9 @@ npm run dev:web
 npm run dev:api
 npm run typecheck
 npm run build
+npm run db:generate
+npm run db:migrate
+npm run db:seed
 docker compose --env-file .env.staging.example -f docker-compose.staging.yml config
 ```
 
@@ -114,13 +118,18 @@ Backend:
 Database:
 
 - Production database: PostgreSQL.
+- ORM: Drizzle.
+- Keep `apps/api/src/db/schema.ts` as the source for migrations.
+- Use `npm run db:generate` after schema changes.
+- Use `npm run db:migrate` against a configured `DATABASE_URL`.
+- Use `npm run db:seed` only for initial/demo data import.
 - SQLite is acceptable only for local demos, tests, or a future local/offline cache.
 
 ## Current State
 
-The frontend currently uses local demo data and local component state. There is no real persistence yet. The next meaningful backend step is to introduce an ORM decision, schema migrations, and the first real menu/order endpoints.
+The frontend currently uses local demo data and local component state. The backend has Drizzle schema, migrations, a database health check, and a public menu endpoint that can read from PostgreSQL.
 
-`data/menu-catalog.json` is the current structured source for the restaurant's real price list. It is not yet wired into the Nuxt UI or API.
+`data/menu-catalog.json` is the current structured source for the restaurant's real price list. It can be seeded into PostgreSQL with `npm run db:seed`.
 
 ## Validation
 

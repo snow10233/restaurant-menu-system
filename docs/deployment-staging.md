@@ -8,7 +8,9 @@ This document describes the intended first deployment target: a single VPS runni
 proxy      Caddy reverse proxy
 web        Nuxt frontend
 api        NestJS backend
+db-migrate Drizzle migration runner
 db         PostgreSQL
+db-seed    optional first-time seed tool
 db-backup  simple staging backup loop
 ```
 
@@ -47,7 +49,10 @@ git pull
 cp .env.staging.example .env.staging
 # edit .env.staging
 docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --build
+docker compose --env-file .env.staging -f docker-compose.staging.yml --profile tools run --rm db-seed
 ```
+
+`db-migrate` runs automatically before `api` starts. `db-seed` is intentionally manual, because menu changes should not be overwritten on every deployment after staff starts editing availability and item data.
 
 Local check before copying to the VPS:
 
@@ -62,7 +67,9 @@ docker compose --env-file .env.staging -f docker-compose.staging.yml ps
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f proxy
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f api
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f db
+docker compose --env-file .env.staging -f docker-compose.staging.yml logs db-migrate
 docker compose --env-file .env.staging -f docker-compose.staging.yml exec db pg_isready -U menu_system -d menu_system
+docker compose --env-file .env.staging -f docker-compose.staging.yml --profile tools run --rm db-seed
 ```
 
 ## Notes
