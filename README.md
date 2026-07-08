@@ -100,6 +100,8 @@ docker compose --env-file .env.staging.example -f docker-compose.staging.yml con
 - `agent.md`：給未來 coding agent 的架構備忘錄
 - `docs/requirements.md`：需求規格書草案
 - `docs/architecture.html`：用 HTML 撰寫的架構解釋
+- `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
+- `docs/adr/0002-database-choice.md`：資料庫選型決策
 - `docs/deployment-staging.md`：staging Docker Compose 部署筆記
 - `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
 - `docs/adr/0002-database-choice.md`：資料庫選型決策
