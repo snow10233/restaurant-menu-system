@@ -49,6 +49,12 @@ cp .env.staging.example .env.staging
 docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --build
 ```
 
+Local check before copying to the VPS:
+
+```sh
+docker compose --env-file .env.staging.example -f docker-compose.staging.yml config
+```
+
 ## Useful Commands
 
 ```sh
@@ -56,9 +62,9 @@ docker compose --env-file .env.staging -f docker-compose.staging.yml ps
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f proxy
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f api
 docker compose --env-file .env.staging -f docker-compose.staging.yml logs -f db
+docker compose --env-file .env.staging -f docker-compose.staging.yml exec db pg_isready -U menu_system -d menu_system
 ```
 
 ## Notes
 
 This staging setup is intentionally simple. It is not yet a full production runbook.
-
