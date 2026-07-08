@@ -34,6 +34,7 @@ apps/
 docs/
   requirements.md
   architecture.html
+  deployment-staging.md
   adr/
 data/
   menu-catalog.json
@@ -61,6 +62,8 @@ Frontend and backend are intentionally separated:
 - `data/menu-catalog.json`: structured source menu catalog from the restaurant price list.
 - `docs/adr/0001-mvp-tech-stack.md`: stack decision.
 - `docs/adr/0002-database-choice.md`: PostgreSQL over SQLite as the production database.
+- `docs/adr/0003-staging-deployment.md`: Docker Compose staging deployment decision.
+- `docs/deployment-staging.md`: staging deployment notes.
 
 ## Commands
 
@@ -122,3 +125,7 @@ npm run build
 ```
 
 Both commands were passing after the Nuxt/NestJS workspace migration.
+
+## Local Reports
+
+Use `local-reports/` for maintainer-facing HTML reports that should not be pushed. This directory is intentionally ignored by git.

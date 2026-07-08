@@ -59,6 +59,15 @@ npm run build
 
 預設 `npm run dev` 會啟動 Nuxt app。
 
+## Staging 部署方向
+
+第一版 staging 會使用 Docker Compose，在單台 VPS 上分開跑 Nuxt、NestJS API、PostgreSQL、Caddy reverse proxy 與簡單備份服務。
+
+詳見：
+
+- `docs/deployment-staging.md`
+- `docs/adr/0003-staging-deployment.md`
+
 ## 主要檔案
 
 - `apps/web-nuxt/app.vue`：Nuxt 前端狀態與頁面切換
@@ -73,5 +82,7 @@ npm run build
 - `agent.md`：給未來 coding agent 的架構備忘錄
 - `docs/requirements.md`：需求規格書草案
 - `docs/architecture.html`：用 HTML 撰寫的架構解釋
+- `docs/deployment-staging.md`：staging Docker Compose 部署筆記
 - `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
 - `docs/adr/0002-database-choice.md`：資料庫選型決策
+- `docs/adr/0003-staging-deployment.md`：staging 部署決策
