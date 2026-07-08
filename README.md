@@ -66,6 +66,14 @@ cp .env.staging.example .env.staging
 docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --build
 ```
 
+CI:
+
+```sh
+npm run typecheck
+npm run build
+docker compose --env-file .env.staging.example -f docker-compose.staging.yml config
+```
+
 ## Staging 部署方向
 
 第一版 staging 會使用 Docker Compose，在單台 VPS 上分開跑 Nuxt、NestJS API、PostgreSQL、Caddy reverse proxy 與簡單備份服務。
@@ -87,6 +95,7 @@ docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --bui
 - `apps/api/src/main.ts`：NestJS API 入口
 - `docker-compose.staging.yml`：單台 VPS staging Compose stack
 - `deploy/Caddyfile`：staging reverse proxy 設定
+- `.github/workflows/ci.yml`：GitHub Actions 基本檢查
 - `data/menu-catalog.json`：餐廳價位一覽的結構化原始資料
 - `agent.md`：給未來 coding agent 的架構備忘錄
 - `docs/requirements.md`：需求規格書草案

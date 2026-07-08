@@ -61,6 +61,7 @@ Frontend and backend are intentionally separated:
 - `apps/api/src/routes/menu.controller.ts`: temporary menu API endpoint.
 - `docker-compose.staging.yml`: staging stack for proxy, web, api, PostgreSQL, and backup.
 - `deploy/Caddyfile`: Caddy reverse proxy routing for `/` and `/api`.
+- `.github/workflows/ci.yml`: lightweight CI for install, typecheck, build, and Compose config validation.
 - `data/menu-catalog.json`: structured source menu catalog from the restaurant price list.
 - `docs/adr/0001-mvp-tech-stack.md`: stack decision.
 - `docs/adr/0002-database-choice.md`: PostgreSQL over SQLite as the production database.
@@ -76,6 +77,7 @@ npm run dev:web
 npm run dev:api
 npm run typecheck
 npm run build
+docker compose --env-file .env.staging.example -f docker-compose.staging.yml config
 ```
 
 Default ports:
