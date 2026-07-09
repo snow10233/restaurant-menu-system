@@ -33,5 +33,5 @@ SQLite 不作為正式雲端/店內伺服器的主資料庫。
 
 - 後端 API 需以 PostgreSQL 為主要資料庫設計。
 - 本機開發可使用 Docker Compose 啟動 PostgreSQL。
-- ORM 可採 Prisma 或 Drizzle；需在下一個 ADR 決定。
+- ORM 採 Drizzle，詳見 `docs/adr/0004-orm-choice.md`。
 - 若未來要做斷網本地端，SQLite 可重新評估為 local cache/sync store，而不是取代主資料庫。

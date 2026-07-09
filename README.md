@@ -5,9 +5,9 @@
 目前專案採 npm workspaces，將前端與後端拆在 `apps/` 下：
 
 - `apps/web-nuxt`：Nuxt + Vue + TypeScript + Tailwind CSS 前端
-- `apps/api`：NestJS API 骨架
+- `apps/api`：NestJS API，使用 Drizzle ORM 接 PostgreSQL
 
-資料庫正式版採 PostgreSQL。SQLite 只建議用於本機 demo、測試或未來離線 local cache，不建議作為正式主資料庫。
+資料庫正式版採 PostgreSQL，ORM 採 Drizzle。SQLite 只建議用於本機 demo、測試或未來離線 local cache，不建議作為正式主資料庫。
 
 ## 目前定位
 
@@ -55,15 +55,25 @@ npm run dev
 npm run dev:api
 npm run dev:web
 npm run build
+npm run db:generate
+npm run db:migrate
+npm run db:seed
 ```
 
 預設 `npm run dev` 會啟動 Nuxt app。
+
+Drizzle/PostgreSQL:
+
+- `npm run db:generate`：依照 `apps/api/src/db/schema.ts` 產生 migration
+- `npm run db:migrate`：把 migration 套用到 `DATABASE_URL`
+- `npm run db:seed`：將 `data/menu-catalog.json` 的菜單灌入資料庫
 
 Docker staging:
 
 ```sh
 cp .env.staging.example .env.staging
 docker compose --env-file .env.staging -f docker-compose.staging.yml up -d --build
+docker compose --env-file .env.staging -f docker-compose.staging.yml --profile tools run --rm db-seed
 ```
 
 CI:
@@ -93,6 +103,9 @@ docker compose --env-file .env.staging.example -f docker-compose.staging.yml con
 - `apps/web-nuxt/data/menu.ts`：目前展示用菜單與訂單資料
 - `apps/web-nuxt/types.ts`：前端 TypeScript 型別
 - `apps/api/src/main.ts`：NestJS API 入口
+- `apps/api/src/db/schema.ts`：Drizzle PostgreSQL schema
+- `apps/api/drizzle/`：資料庫 migration
+- `apps/api/src/db/seed.ts`：從 `data/menu-catalog.json` 灌入初始菜單
 - `docker-compose.staging.yml`：單台 VPS staging Compose stack
 - `deploy/Caddyfile`：staging reverse proxy 設定
 - `.github/workflows/ci.yml`：GitHub Actions 基本檢查
@@ -106,3 +119,4 @@ docker compose --env-file .env.staging.example -f docker-compose.staging.yml con
 - `docs/adr/0001-mvp-tech-stack.md`：初期技術選型決策
 - `docs/adr/0002-database-choice.md`：資料庫選型決策
 - `docs/adr/0003-staging-deployment.md`：staging 部署決策
+- `docs/adr/0004-orm-choice.md`：ORM 選型決策
