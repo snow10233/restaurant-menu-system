@@ -8,6 +8,7 @@ COPY apps/web-nuxt/package.json apps/web-nuxt/package.json
 RUN npm ci
 
 COPY apps/web-nuxt apps/web-nuxt
+COPY data data
 
 RUN npm run build -w @menu-system/web-nuxt
 
