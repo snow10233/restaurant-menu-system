@@ -16,7 +16,6 @@ SQLite 可作為：
 
 - 本機 demo
 - 單元測試
-- 早期本機 demo
 - 未來離線本地端的 embedded store 候選
 
 SQLite 不作為正式雲端/店內伺服器的主資料庫。
