@@ -180,6 +180,6 @@
 
 ## 10. MVP 與可上線版本落差
 
-MVP 重點是驗證點餐流程與現場接受度。專案已拆成 `apps/web-nuxt` 與 `apps/api`。前端採 Nuxt + Vue + TypeScript + Tailwind CSS；後端 API 以 NestJS 起步，等點餐流程確認後再接 PostgreSQL。可上線版本則必須補上正式資料庫、交易、權限、監控、備份、自動化測試與部署流程。
+MVP 重點是驗證點餐流程與現場接受度。專案已拆成 `apps/web-nuxt` 與 `apps/api`。前端採 Nuxt + Vue + TypeScript + Tailwind CSS；後端 API 採 NestJS，並以 Drizzle ORM 連接 PostgreSQL。可上線版本則必須補上正式資料庫、交易、權限、監控、備份、自動化測試與部署流程。
 
 以實務成本來看，MVP 可以先完成 20% 到 30% 的核心流程，快速讓餐廳試用；商用上線版本需要額外投入大量時間在穩定性、例外處理、資料一致性與營運維護。

@@ -19,7 +19,7 @@
 - Styling：Tailwind CSS
 - Backend：NestJS + TypeScript
 - Database：PostgreSQL
-- ORM：Prisma 或 Drizzle
+- ORM：Prisma 或 Drizzle（後續已於 ADR 0004 決定採用 Drizzle）
 - Cache/Queue：Redis
 - Runtime：Docker Compose 起步
 

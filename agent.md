@@ -33,13 +33,12 @@ apps/
   api/        NestJS + TypeScript API with Drizzle/PostgreSQL
 docs/
   requirements.md
-  architecture.html
   deployment-staging.md
   adr/
+local-reports/
+  local-only HTML reports ignored by git
 data/
   menu-catalog.json
-assets/
-  source menu images
 ```
 
 Frontend and backend are intentionally separated:
@@ -70,6 +69,7 @@ Frontend and backend are intentionally separated:
 - `docs/adr/0001-mvp-tech-stack.md`: stack decision.
 - `docs/adr/0002-database-choice.md`: PostgreSQL over SQLite as the production database.
 - `docs/adr/0003-staging-deployment.md`: Docker Compose staging deployment decision.
+- `docs/adr/0004-orm-choice.md`: Drizzle as the ORM.
 - `docs/deployment-staging.md`: staging deployment notes.
 
 ## Commands
