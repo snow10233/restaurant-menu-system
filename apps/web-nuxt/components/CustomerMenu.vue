@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import type { CartItem, Dish, DishCategory, StockStatus } from "../types";
+import type { CartItem, Dish, StockStatus } from "../types";
 import { formatCurrency } from "../utils/format";
 
 const props = defineProps<{
@@ -20,18 +20,16 @@ const emit = defineEmits<{
   removeCart: [index: number];
 }>();
 
-type CategoryFilter = "all" | DishCategory;
-
-const selectedCategory = ref<CategoryFilter>("all");
+const selectedCategory = ref("all");
 const search = ref("");
 
-const categories: { id: CategoryFilter; label: string }[] = [
-  { id: "all", label: "全部" },
-  { id: "sushi", label: "壽司" },
-  { id: "rice", label: "飯類" },
-  { id: "noodle", label: "麵食" },
-  { id: "seasonal", label: "時令" }
-];
+const categories = computed(() => {
+  const labels = new Map([["all", "全部"]]);
+  for (const dish of props.dishes) {
+    if (!labels.has(dish.category)) labels.set(dish.category, dish.categoryLabel);
+  }
+  return Array.from(labels, ([id, label]) => ({ id, label }));
+});
 
 const visibleDishes = computed(() => {
   const query = search.value.trim().toLowerCase();
@@ -48,6 +46,19 @@ function stockText(dish: Dish): string {
 
 function stockStatus(dish: Dish): StockStatus {
   return props.inventory[dish.id] ?? dish.status;
+}
+
+function quickAddLabel(dish: Dish): string {
+  if (!dish.orderable) return "請洽店員";
+  return dish.choiceGroups.length > 0 ? "選擇" : "加入";
+}
+
+function quickAdd(dish: Dish) {
+  if (dish.choiceGroups.length > 0) {
+    emit("openDish", dish.id);
+    return;
+  }
+  emit("addToCart", dish, 1, "", dish.price);
 }
 </script>
 
@@ -99,17 +110,19 @@ function stockStatus(dish: Dish): StockStatus {
         <article
           v-for="dish in visibleDishes"
           :key="dish.id"
-          class="grid overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm sm:grid-cols-[10.5rem_minmax(0,1fr)]"
+          class="grid overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm"
+          :class="{ 'sm:grid-cols-[10.5rem_minmax(0,1fr)]': dish.image }"
         >
-          <img class="h-48 w-full object-cover sm:h-full" :src="dish.image" :alt="dish.name" />
+          <img v-if="dish.image" class="h-48 w-full object-cover sm:h-full" :src="dish.image" :alt="dish.name" />
           <div class="grid gap-4 p-4">
             <div class="flex items-start justify-between gap-3">
               <StatusPill :status="stockStatus(dish)" :label="stockText(dish)" />
-              <strong class="text-lg">{{ formatCurrency(dish.price) }}</strong>
+              <strong class="text-lg">{{ dish.priceLabel ?? formatCurrency(dish.price) }}</strong>
             </div>
             <div>
+              <p class="mb-1 text-xs font-black text-teal-700">{{ dish.categoryLabel }}</p>
               <h3 class="text-lg font-black tracking-normal">{{ dish.name }}</h3>
-              <p class="mt-1 text-sm text-stone-500">{{ dish.description }}</p>
+              <p v-if="dish.description" class="mt-1 text-sm text-stone-500">{{ dish.description }}</p>
             </div>
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button type="button" class="text-left font-black text-teal-800" @click="emit('openDish', dish.id)">
@@ -118,10 +131,10 @@ function stockStatus(dish: Dish): StockStatus {
               <button
                 type="button"
                 class="min-h-11 rounded-lg bg-teal-700 px-4 font-black text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
-                :disabled="inventory[dish.id] === 'closed'"
-                @click="emit('addToCart', dish, 1, '', dish.price)"
+                :disabled="!dish.orderable || inventory[dish.id] === 'closed'"
+                @click="quickAdd(dish)"
               >
-                加入
+                {{ quickAddLabel(dish) }}
               </button>
             </div>
           </div>

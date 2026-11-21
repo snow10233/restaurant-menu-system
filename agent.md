@@ -54,7 +54,7 @@ Frontend and backend are intentionally separated:
 - `apps/web-nuxt/components/DishDetail.vue`: dish options and add-to-cart flow.
 - `apps/web-nuxt/components/StaffConsole.vue`: staff order/inventory prototype.
 - `apps/web-nuxt/components/CartPanel.vue`: cart UI and quantity controls.
-- `apps/web-nuxt/data/menu.ts`: temporary demo menu/order data.
+- `apps/web-nuxt/data/menu.ts`: builds the frontend menu from `data/menu-catalog.json` at build time; also holds demo order tickets.
 - `apps/web-nuxt/types.ts`: frontend TypeScript domain types.
 - `apps/api/src/main.ts`: NestJS bootstrap, CORS, and `/api` prefix.
 - `apps/api/src/db/schema.ts`: Drizzle schema for restaurants, menu categories, menu items, status, and inventory mode.
@@ -127,7 +127,7 @@ Database:
 
 ## Current State
 
-The frontend currently uses local demo data and local component state. The backend has Drizzle schema, migrations, a database health check, and a public menu endpoint that can read from PostgreSQL.
+The frontend imports `data/menu-catalog.json` at build time (not yet through the API) and keeps cart, inventory, and orders in local component state. The backend has Drizzle schema, migrations, a database health check, and a public menu endpoint that can read from PostgreSQL.
 
 `data/menu-catalog.json` is the current structured source for the restaurant's real price list. It can be seeded into PostgreSQL with `npm run db:seed`.
 

@@ -100,7 +100,7 @@ docker compose --env-file .env.staging.example -f docker-compose.staging.yml con
 - `apps/web-nuxt/components/DishDetail.vue`：餐點詳情頁
 - `apps/web-nuxt/components/StaffConsole.vue`：店員控制台
 - `apps/web-nuxt/components/CartPanel.vue`：購物車
-- `apps/web-nuxt/data/menu.ts`：目前展示用菜單與訂單資料
+- `apps/web-nuxt/data/menu.ts`：把 `data/menu-catalog.json` 轉成前端菜單，另含展示用訂單資料
 - `apps/web-nuxt/types.ts`：前端 TypeScript 型別
 - `apps/api/src/main.ts`：NestJS API 入口
 - `apps/api/src/db/schema.ts`：Drizzle PostgreSQL schema

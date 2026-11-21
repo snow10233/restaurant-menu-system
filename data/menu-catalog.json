@@ -50,31 +50,37 @@
         {
           "name": "鰻魚握壽司",
           "portion": "二貫",
+          "preparation": "烤",
           "price": 80
         },
         {
           "name": "照燒玉子握壽司",
           "portion": "二貫",
+          "preparation": "烤",
           "price": 60
         },
         {
           "name": "軟絲握壽司",
           "portion": "二貫",
+          "preparation": "炙燒",
           "price": 80
         },
         {
           "name": "干貝握壽司",
           "portion": "二貫",
+          "preparation": "炙燒",
           "price": 120
         },
         {
           "name": "天使蝦握壽司",
           "portion": "二貫",
+          "preparation": "炙燒",
           "price": 120
         },
         {
           "name": "比目魚鰭邊肉握壽司",
           "portion": "二貫",
+          "preparation": "炙燒",
           "price": 150
         }
       ]
@@ -319,7 +325,8 @@
       "groups": [
         {
           "id": "main-a",
-          "name": "A",
+          "code": "A",
+          "name": "主餐",
           "required": true,
           "items": [
             {
@@ -391,7 +398,8 @@
         },
         {
           "id": "side-b",
-          "name": "B",
+          "code": "B",
+          "name": "副餐",
           "required": true,
           "items": [
             {
@@ -412,10 +420,37 @@
         }
       ],
       "includedSides": ["食蔬", "蒸蛋", "味噌湯", "白飯"],
-      "rules": [
-        "壽司類定食附餐無白飯。",
-        "升級湯鍋附餐無味噌湯。"
-      ]
+      "rules": ["壽司類定食附餐無白飯。", "升級湯鍋附餐無味噌湯。"]
+    }
+  ],
+  "setUpgrades": [
+    {
+      "id": "set-upgrade",
+      "name": "升級定食",
+      "description": "飯類、麵類加 210 元可升級為定食套餐。",
+      "categoryIds": ["rice", "noodles"],
+      "priceDelta": 210,
+      "groups": [
+        {
+          "id": "upgrade-side",
+          "name": "副餐三選一",
+          "required": true,
+          "items": [
+            {
+              "name": "鮮蝦沙拉"
+            },
+            {
+              "name": "生魚片"
+            },
+            {
+              "name": "升級湯鍋四選一",
+              "priceDelta": 20,
+              "choices": ["豬肉湯鍋", "牛肉湯鍋", "海鮮湯鍋", "味噌鮭魚皮湯鍋"]
+            }
+          ]
+        }
+      ],
+      "includedSides": ["食蔬", "蒸蛋", "味噌湯"]
     }
   ]
 }

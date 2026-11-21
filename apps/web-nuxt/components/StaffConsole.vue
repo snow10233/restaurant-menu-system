@@ -68,7 +68,13 @@ function availabilityText(dish: Dish): string {
           :key="dish.id"
           class="grid grid-cols-[4.5rem_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border border-stone-200 bg-white p-3 shadow-sm"
         >
-          <img class="h-16 w-[4.5rem] rounded-md object-cover" :src="dish.image" :alt="dish.name" />
+          <img v-if="dish.image" class="h-16 w-[4.5rem] rounded-md object-cover" :src="dish.image" :alt="dish.name" />
+          <div
+            v-else
+            class="grid h-16 w-[4.5rem] place-items-center rounded-md bg-stone-100 px-1 text-center text-xs font-black text-stone-500"
+          >
+            {{ dish.categoryLabel }}
+          </div>
           <div class="min-w-0">
             <h3 class="truncate font-black">{{ dish.name }}</h3>
             <p class="text-sm text-stone-500">{{ availabilityText(dish) }}</p>
