@@ -1,4 +1,4 @@
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 
 WORKDIR /app
 
@@ -22,7 +22,7 @@ FROM build AS pruned
 
 RUN npm prune --omit=dev
 
-FROM node:22-alpine AS runtime
+FROM node:26-alpine AS runtime
 
 WORKDIR /app/apps/api
 
