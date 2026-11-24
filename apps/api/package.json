@@ -14,7 +14,7 @@
     "db:studio": "drizzle-kit studio --config drizzle.config.ts"
   },
   "dependencies": {
-    "@nestjs/common": "^11.1.9",
+    "@nestjs/common": "^12.6.0",
     "@nestjs/core": "^11.1.9",
     "@nestjs/platform-express": "^11.2.11",
     "drizzle-orm": "^0.45.2",
